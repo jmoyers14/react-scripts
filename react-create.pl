@@ -47,13 +47,13 @@ my $classname = $ARGV[0];
 my $filename = $classname . '.jsx';
 
 my $header = <<"END_MESSAGE";
-//
-//  $filename
-//  $project
-//
-//  Created by $author on $date
-//  Copyright $company. All rights reserved.
-//
+/**
+ *  $filename
+ *  $project
+ *
+ *  Created by $author on $date
+ *  Copyright $company. All rights reserved.
+ */
 
 END_MESSAGE
 
