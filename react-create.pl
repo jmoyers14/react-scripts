@@ -77,12 +77,11 @@ $classname.propTypes = propTypes;
 export default $classname;
 END_TEMPLATE
 
-if (-e -d "test") {
-    print "test exists\n";
-}
 
 if ($container == 1) {
-    print "container\n";
+    if (-e -d "containers") {
+        $filename = "containers/$filename";
+    }
     open(my $fh, ">", $filename) or die "can't open $filename\n";
     print $fh $header;
     print $fh $component_template;
@@ -91,10 +90,20 @@ if ($container == 1) {
 }
 
 if ($component == 1) {
+    if (-e -d "components") {
+        $filename = "containers/$filename";
+    }
     open(my $fh, ">", $filename) or die "can't open $filename\n";
     print $fh $header;
     print $fh $component_template;
     close($fh);
     exit;
 }
+
+$filename = $classname . '.js';
+open(my $fh, ">", $filename) or die "can't open $filename\n";
+print $fh $header;
+close($fh);
+
+
 
