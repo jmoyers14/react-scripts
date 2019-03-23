@@ -77,6 +77,38 @@ $classname.propTypes = propTypes;
 export default $classname;
 END_TEMPLATE
 
+my $container_template = <<"END_TEMPLATE";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { withStyles } from '\@material-ui/core/styles';
+
+const propTypes = {
+
+};
+
+class $classname extends Component {
+    render() {
+        return (<div />);
+    }
+}
+
+const mapStateToProps = state {
+
+};
+
+const mapDispatchToProps = dispatch {
+
+};
+
+$classname.propTypes = propTypes;
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps,
+)($classname);
+END_TEMPLATE
+
 
 if ($container == 1) {
     if (-e -d "containers") {
@@ -84,7 +116,7 @@ if ($container == 1) {
     }
     open(my $fh, ">", $filename) or die "can't open $filename\n";
     print $fh $header;
-    print $fh $component_template;
+    print $fh $container_template;
     close($fh);
     exit;
 }
